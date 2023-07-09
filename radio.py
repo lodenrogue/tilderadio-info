@@ -32,9 +32,11 @@ class Show:
 
     def _is_after_current_date(self, date):
         current_date = datetime.now(timezone.utc)
+        is_day_after = date.day == current_date.day + 1
+
         return (date.month >= current_date.month
             and date.day >= current_date.day
-            and date.time() > current_date.time())
+            and (date.time() > current_date.time() or is_day_after))
 
 
 class Schedule:
